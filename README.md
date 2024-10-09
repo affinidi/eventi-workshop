@@ -10,7 +10,7 @@ The workshop is structured into different key modules
 
   Learn to create secure and user-friendly authentication flows without relying on traditional passwords using [Affinidi Login](https://docs.affinidi.com/docs/affinidi-login/how-affinidi-login-works/)
 
-- Estimated time to complete the module: **5 min**
+  - Estimated time to complete the module: **5 min**
 
 - [**Module 2: Issue Event Ticket as Verifiable Credential**](/docs/credentials-issuance.md) Dive into the Credentials Issuance feature to issue tamper-evident digital credentials, enabling trust in digital interactions through the flow of portable trusted data using [Affinidi Credential Issuance Service](/docs/credentials-issuance.md)
 
