@@ -6,7 +6,7 @@ More Details on Affinidi Iota Framework is available on [Affinidi Documentation]
 
 ## Introduction
 
-We will use the same [Next.js](https://nextjs.org/) app which we worked on in modules 1 & module 2 and enable the Affinidi Iota framework in the `iota` page with the `nextjs` Framework. It implements workflows that ensure users have full control over their data, emphasizing secure and transparent data-sharing practices using OID4VP & PEX.
+We will use the same `Eventi App` which we worked on in modules 1 & module 2 and enable the Affinidi Iota framework for ticket verification. It implements workflows that ensure users have full control over their data, emphasizing secure and transparent data-sharing practices using OID4VP & PEX.
 
 ## Architecture
 
