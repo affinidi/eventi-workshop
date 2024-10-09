@@ -250,6 +250,6 @@ Open [http://localhost:3000/verification](http://localhost:3000/verification) wi
 
 ## More Resources for Advanced Learning
 
-- [Affinidi Documentation](https://docs.affinidi.com/docs/affinidi-elements/credential-issuance/)
+- [Affinidi Credential Issuance Documentation](https://docs.affinidi.com/docs/affinidi-elements/credential-issuance/)
 - [Affinidi Iota Framework](https://docs.affinidi.com/frameworks/iota-framework/)
 - [Affinidi Credential Verification](https://docs.affinidi.com/docs/affinidi-elements/credential-verification/)
