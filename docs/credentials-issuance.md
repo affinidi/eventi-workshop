@@ -41,10 +41,8 @@ When issuing a Verifiable Credential, three main flows happen within the whole p
 | `Create API endpoint for issuance`            | Create API endpoint `/api/issuance/start` to [event ticket VC using Affinidi TDK](#create-api-endpoint-apiissuancestart-which-we-have-used-in-issueticketvc-function) |
 | `Run Application`                             | Try the App with [Affinidi Login & Affinidi Credentials Issuance Configuration](#run-the-application-to-experience-affinidi-credentials-issuance)                     |
 
-
 > [!IMPORTANT]
 > This Module is an extension of the same Eventi App that we worked on for [**Module 1**](/docs/generate-app.md).
-
 
 ## Step-by-Step Guide to enable Affinidi Credential Issuance Service
 
@@ -82,8 +80,9 @@ For more information, refer to the [Wallets documentation](https://docs.affinidi
 
 4. Click on `Create Configuration` and set the following fields:
 
-   `Issuing Wallet`: Select Wallet Created the previous step
-   `Lifetime of Credential Offer` as `600`
+   - `Name of configuration` as `myCISConfig`
+   - `Issuing Wallet`: Select Wallet Created the previous step
+   - `Lifetime of Credential Offer` as `600`
 
 5. Add schemas by clicking on "Add new item" under `Supported Schemas`
 
@@ -98,7 +97,7 @@ For more information, refer to the [Wallets documentation](https://docs.affinidi
 > You can create your own schema using by navigating to `Affinidi Schema Builder` under the `Services` section. For more details on `Schema Builder` refer to [Affinidi documentation](https://docs.affinidi.com/docs/affinidi-elements/schema-builder/).
 
 > [!WARNING]
-> Ensure `NEXT_PUBLIC_CREDENTIAL_TYPE_ID` value in `.env` should be same as _Credential Type ID_
+> Ensure the `NEXT_PUBLIC_CREDENTIAL_TYPE_ID` value in the .env file matches the _Credential Type ID_.
 
 ### Implement Application Code Changes
 
@@ -138,9 +137,9 @@ const IssueTicketVC = async () => {
     createdAt: new Date(),
     attendeeAtrributes: {
       email: consumer.user.email,
-      firstName: consumer.user.givenName,
-      lastName: consumer.user.familyName,
-      dateOfBirth: consumer.user.birthdate,
+      firstName: consumer.user.givenName || "John",
+      lastName: consumer.user.familyName || "Doe",
+      dateOfBirth: consumer.user.birthdate || "2010-10-17",
     },
     secrete: date,
   };
@@ -199,52 +198,53 @@ Create `handlePay` function which prepares the event ticket VC data and invoke t
 Add the issuance logic in the API Handler `src\pages\api\issuance\start.ts`
 
 ```javascript
-    //Add VC Issuance Logic here
-    const { credentialTypeId, credentialData, claimMode } =
-      issuanceStartSchema.parse(req.body);
+//Add VC Issuance Logic here
+const { credentialTypeId, credentialData, claimMode } =
+  issuanceStartSchema.parse(req.body);
 
-    const session = await getServerSession(req, res, authOptions);
-    const holderDid = session?.userId;
+const session = await getServerSession(req, res, authOptions);
+const holderDid = session?.userId;
 
-    //Holder DID is required if Claim mode is FIXED_HOLDER
-    if (!holderDid && claimMode == StartIssuanceInputClaimModeEnum.FixedHolder) {
-      res.status(400).json({
-        message: "Holder DID is required in FIXED_HOLDER claim mode",
-      });
-      return;
-    }
+//Holder DID is required if Claim mode is FIXED_HOLDER
+if (!holderDid && claimMode == StartIssuanceInputClaimModeEnum.FixedHolder) {
+  res.status(400).json({
+    message: "Holder DID is required in FIXED_HOLDER claim mode",
+  });
+  return;
+}
 
-    //Prepare the data for issuance
-    const apiData: StartIssuanceInput = {
-      claimMode,
-      ...(holderDid && { holderDid }),
-      data: [
-        {
-          credentialTypeId,
-          credentialData: {
-            ...credentialData,
-          },
-        },
-      ],
-    };
+//Prepare the data for issuance
+const apiData: StartIssuanceInput = {
+  claimMode,
+  ...(holderDid && { holderDid }),
+  data: [
+    {
+      credentialTypeId,
+      credentialData: {
+        ...credentialData,
+      },
+    },
+  ],
+};
 
-    //Initiatlize the Affinidi TDK with Personal Access Token details
-    const authProvider = getAuthProvider();
+//Initiatlize the Affinidi TDK with Personal Access Token details
+const authProvider = getAuthProvider();
 
-    //Initiatlize the Affinidi Issuance API Object
-    const api = new IssuanceApi(
-      new Configuration({
-        apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
-      }),
-    );
+//Initiatlize the Affinidi Issuance API Object
+const api = new IssuanceApi(
+  new Configuration({
+    apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
+  })
+);
 
-    //Start Issuance
-    const issuanceResponse = await api.startIssuance(projectId, apiData);
+//Start Issuance
+const issuanceResponse = await api.startIssuance(projectId, apiData);
 
-    // Reading issuance offer
-    const { credentialOfferUri, txCode, issuanceId, expiresIn } = issuanceResponse.data;
+// Reading issuance offer
+const { credentialOfferUri, txCode, issuanceId, expiresIn } =
+  issuanceResponse.data;
 
-    res.status(200).json({ credentialOfferUri, txCode, issuanceId, expiresIn });
+res.status(200).json({ credentialOfferUri, txCode, issuanceId, expiresIn });
 ```
 
 #### Run The application to experience Affinidi Credentials Issuance

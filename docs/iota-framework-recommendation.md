@@ -48,9 +48,9 @@ Add New Presentation Definition for requesting music preferences in Affinidi Iot
 
 2. Open Your Iota Configuration details by clicking on `Affinidi Iota Framework` menu under `Frameworks` section
 
-3. If Iota Configuration _Data sharing flow mode_ is `Redirect` then Edit the Iota configuration details and add another `Redirect URLs` as `http://localhost:3000/` and then Click `Save` button
+3. If Iota Configuration _Data sharing flow mode_ is `Redirect` then Edit the Iota configuration details and add another `Redirect URLs` with new line as `http://localhost:3000/` and then Click `Save` button
 
-4. Click `Edit` button under `Create Presentation Definitions` to add new presentation definition for requesting music recommendations
+4. Click `Edit` button under `Create Presentation Definitions` section to add new presentation definition for requesting music recommendations
 
 5. Click `+ Add` button and providing the name of the Presentation Definition as `Music Recommendations` and then select from the available templates to pre-populate the editor and modify with the below presentation definition to request `Music Recommendations Credential` from the Affinidi Vault.
 
@@ -107,7 +107,7 @@ Add New Presentation Definition for requesting music preferences in Affinidi Iot
 }
 ```
 
-7. Click on Create, `QueryId` for requesting Event Ticket VC is generated.
+7. Click on `Create` button, `QueryId` for requesting Event Ticket VC is generated.
 
 ### Update environment variables
 
@@ -167,6 +167,9 @@ const handleInitiateRecommendations = () => {
 ### Run The application to experience the Affinidi Iota framework
 
 Try the App with Affinidi Iota Framework and click on `Give Me Recommendations` button on the landing page.
+
+> [!NOTE]
+> The Eventi App filters events exclusively by music genres such as `Pop`, `Rock`, `Hip Hop`, and `Jazz`. Try giving one of these values in your Affinidi vault to view the filtered events based on the chosen genre.
 
 ```sh
 npm run dev

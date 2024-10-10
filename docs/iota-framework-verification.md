@@ -62,23 +62,26 @@ Create Affinidi Iota framework configuration by using the [Affinidi Portal](http
 
 1. Login to [Affinidi Portal](https://portal.affinidi.com)
 
-2. Click on Create Configuration and set the following fields:
+2. Go to `Affinidi Iota Framework` under the `Frameworks` section.
 
-   `Wallet`: Create a new wallet and provide the new wallet name, or select an existing Wallet that will sign and issue the credentials to the user.
+3. Click on `Create Configuration` button and set the following fields:
 
-   `Vault JWT Expiration time`: Credential Offers have a limited lifetime to enhance security. Consumers must claim the offer within this timeframe.
+   - `Name of configuration` as `myIotaConfig`
+   - `Wallet`: Create a new wallet and provide the new wallet name, or select an existing Wallet that will sign and issue the credentials to the user.
+   - `Lifetime of Request Token`: Credential Offers have a limited lifetime to enhance security. Consumers must claim the offer within this timeframe.
+   - `Display name` as `Eventi Iota`
 
-3. Select _Data sharing flow mode_ as `Redirect`, and add `Redirect URLs` as `http://localhost:3000/verification`
+4. Select _Data sharing flow mode_ as `Redirect`, and add `Redirect URLs` as `http://localhost:3000/verification`
 
-4. Optionally, you can configure whether to enable:
+5. Optionally, you can configure whether to enable:
 
-   `Enable Verification`: To verify the credentials the user shares using the Credential Verification service.
+   - `Enable Credential Verification`: To verify the credentials the user shares using the Credential Verification service.
 
-   `Enable Consent Audit Log`: To store the consent given by the user whenever they share data with the website.
+   - `Enable Consent Audit Log`: To store the consent given by the user whenever they share data with the website.
 
-5. Click `Create` button, `ConfigurationId` is generated
+6. Click `Create` button, `ConfigurationId` is generated
 
-6. Click `Create Presentation Definitions` and by providing the name of the Presentation Definition as `Event Ticket VC` and then select from the available templates to pre-populate the editor and modify with the below presentation definition to request `Event Ticket Credential` from the Affinidi Vault.
+7. Click `Create Presentation Definition` button and provide the name of the Presentation Definition as `Event Ticket VC` and then select from the available templates to pre-populate the editor and modify with the below presentation definition to request `Event Ticket Credential` from the Affinidi Vault.
 
 ```Json
 {
@@ -110,7 +113,7 @@ Create Affinidi Iota framework configuration by using the [Affinidi Portal](http
 }
 ```
 
-7. Click on Create, `QueryId` for requesting Event Ticket VC is generated.
+8. Click on `Create` button, `QueryId` for requesting Event Ticket VC is generated.
 
 > [!IMPORTANT]
 > The above PEX query responds only in case Affinidi Vault has claimed credentials using Affinidi Credential Issuance enabled from the previous workshop steps.
@@ -170,7 +173,6 @@ Note: This API is called in React Custom Hook `useIotaQuery` to initiate Affinid
 
 ```javascript
     //Add Affinidi Iota Redirect flow login using Affinidi TDK
-
 
     // Read the below params from Iota initiate request body
     // configurationId - Iota configuration Id
