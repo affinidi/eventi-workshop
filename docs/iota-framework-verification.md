@@ -169,7 +169,8 @@ const handleShareTicket = () => {
 
 Open the API Handler `src\pages\api\iota\start-redirect-flow.ts`, and add the Affinidi Iota Redirect flow logic which uses Affinidi TDK
 
-Note: This API is called in React Custom Hook `useIotaQuery` to initiate Affinidi Iota request.
+> [!NOTE]
+> This API is called in React Custom Hook `useIotaQuery` to initiate Affinidi Iota request.
 
 ```javascript
     //Add Affinidi Iota Redirect flow login using Affinidi TDK

@@ -74,7 +74,7 @@ You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
 
 2. Open the `Wallets` menu under the `Tools` section and click on `Create Wallet` with any name (e.g. `MyWallet`) and DID method as `did:key`.
 
-For more information, refer to the [Wallets documentation](https://docs.affinidi.com/dev-tools/wallets)
+   For more information, refer to the [Wallets documentation](https://docs.affinidi.com/dev-tools/wallets)
 
 3. Go to `Credential Issuance Service` under the `Services` section.
 
@@ -97,7 +97,7 @@ For more information, refer to the [Wallets documentation](https://docs.affinidi
 > You can create your own schema using by navigating to `Affinidi Schema Builder` under the `Services` section. For more details on `Schema Builder` refer to [Affinidi documentation](https://docs.affinidi.com/docs/affinidi-elements/schema-builder/).
 
 > [!WARNING]
-> Ensure the `NEXT_PUBLIC_CREDENTIAL_TYPE_ID` value in the .env file matches the _Credential Type ID_.
+> Ensure the `NEXT_PUBLIC_CREDENTIAL_TYPE_ID` value in the application's `.env` file matches the _Credential Type ID_.
 
 ### Implement Application Code Changes
 
@@ -105,7 +105,7 @@ On the checkout page, post purchase of the ticket, we are going to issue a ticke
 
 #### Open `src\components\Checkout\index.tsx` and add the below function `IssueTicketVC`(before `handlePay` event handler),
 
-The below function has below logic
+This function contains below logic:
 
 1. Prepare event ticket credential data from the purchased ticket details
 2. Call Eventi's API `/api/issuance/start` (we are going to create the API endpoint in next step) to issue a **Event Ticket Credential offer URL**
