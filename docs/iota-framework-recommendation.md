@@ -28,8 +28,8 @@ If you have completed [Module 3](./iota-framework-verification.md) go to next st
 
 - Iota Configuration should be created as mentioned in [Module 3](./iota-framework-verification.md#configure-affinidi-iota-configuration)
 - Install Dependencies as mentioned in [Module 3](./iota-framework-verification.md#install-dependencies)
-- Create API to initiate [Iota request](./iota-framework-verification.md#create-api-endpoint-apiiotastart-redirect-flow---initiate-request) |
-- Create API to get data from the [Iota Initiate request](./iota-framework-verification.md#create-api-endpoint-apiiotaiota-response---get-requested-data) |
+- Create API to initiate [Iota request](./iota-framework-verification.md#create-api-endpoint-apiiotastart-redirect-flow---initiate-request)
+- Create API to get data from the [Iota Initiate request](./iota-framework-verification.md#create-api-endpoint-apiiotaiota-response---get-requested-data)
 
 ## Step-by-Step Guide to enable Affinidi Iota Framework
 

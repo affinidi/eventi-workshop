@@ -52,7 +52,6 @@ Before proceeding with the steps below.
 
 > [!WARNING]
 > The steps showcased in this sample application are provided only as a guide to quickly explore and learn how to integrate the components of Affinidi Trust Network into your application. This is NOT a Production-ready implementation. Do not deploy this to a production environment.
-> &nbsp;
 
 Now, let's continue with the step-by-step guide to enable the Affinidi Credentials Issuance service in the sample App.
 
@@ -200,37 +199,52 @@ Create `handlePay` function which prepares the event ticket VC data and invoke t
 Add the issuance logic in the API Handler `src\pages\api\issuance\start.ts`
 
 ```javascript
-//Add VC Issuance Logic here
-const { credentialTypeId, credentialData, claimMode } =
-  issuanceStartSchema.parse(req.body);
+    //Add VC Issuance Logic here
+    const { credentialTypeId, credentialData, claimMode } =
+      issuanceStartSchema.parse(req.body);
 
-const session = await getServerSession(req, res, authOptions);
-const holderDid = session?.userId;
+    const session = await getServerSession(req, res, authOptions);
+    const holderDid = session?.userId;
 
-//Holder DID is required if Claim mode is FIXED_HOLDER
-if (!holderDid && claimMode == StartIssuanceInputClaimModeEnum.FixedHolder) {
-  res.status(400).json({
-    message: "Holder DID is required in FIXED_HOLDER claim mode",
-  });
-  return;
-}
+    //Holder DID is required if Claim mode is FIXED_HOLDER
+    if (!holderDid && claimMode == StartIssuanceInputClaimModeEnum.FixedHolder) {
+      res.status(400).json({
+        message: "Holder DID is required in FIXED_HOLDER claim mode",
+      });
+      return;
+    }
 
-const apiData: StartIssuanceInput = {
-  claimMode,
-  ...(holderDid && { holderDid }),
-  data: [
-    {
-      credentialTypeId,
-      credentialData: {
-        ...credentialData,
-      },
-    },
-  ],
-};
+    //Prepare the data for issuance
+    const apiData: StartIssuanceInput = {
+      claimMode,
+      ...(holderDid && { holderDid }),
+      data: [
+        {
+          credentialTypeId,
+          credentialData: {
+            ...credentialData,
+          },
+        },
+      ],
+    };
 
-//Call helper method to issue a VC which uses Affinidi TDK
-const issuanceResult = await startIssuance(apiData);
-res.status(200).json(issuanceResult);
+    //Initiatlize the Affinidi TDK with Personal Access Token details
+    const authProvider = getAuthProvider();
+
+    //Initiatlize the Affinidi Issuance API Object
+    const api = new IssuanceApi(
+      new Configuration({
+        apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
+      }),
+    );
+
+    //Start Issuance
+    const issuanceResponse = await api.startIssuance(projectId, apiData);
+
+    // Reading issuance offer
+    const { credentialOfferUri, txCode, issuanceId, expiresIn } = issuanceResponse.data;
+
+    res.status(200).json({ credentialOfferUri, txCode, issuanceId, expiresIn });
 ```
 
 #### Run The application to experience Affinidi Credentials Issuance
