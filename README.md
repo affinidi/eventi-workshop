@@ -25,6 +25,9 @@ The workshop is structured into different key modules
 
 By the end of these modules, you'll have a comprehensive understanding of how to leverage the Affinidi Trust Network (ATN) to build robust, user-centric interoperable applications.
 
+> [!WARNING]
+> This sample application are provided only as a guide to quickly explore and learn how to integrate the components of Affinidi Trust Network into your application. This is NOT a Production-ready implementation. Please don't deploy this to a production environment.
+
 ![Affinidi ATN Workshop](/docs/images/workshop.gif)
 
 ## Read More
