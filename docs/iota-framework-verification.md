@@ -22,16 +22,16 @@ After creating a configuration, you can integrate the Affinidi Iota Framework in
 
 ## Table of content
 
-| Content                                       | Description                                                                                                             |
-| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `Install dependencies`                        | Install [dependencies](#install-dependencies)                                                                           |
-| `Affinidi Iota Framework config`              | Configure [Affinidi Iota Framework](#configure-affinidi-iota-configuration)                                             |
-| `Update .env files`                           | Update [.env](#update-environment-variables) files                                                                      |
-| `Use useIotaQuery Hook`                       | Initiate Iota Request using [custom hook](#use-react-custom-hook-useiotaquery-to-request-event-ticket-vc)               |
-| `Invoke Request on handleShareTicket hanlder` | Invoke Iota initiation request inside the [handleShareTicket](#apply-action-on-button-click-handleshareticket-handler)  |
-| `Create API for Iota Request`                 | Create API to initiate [Iota request](#create-api-endpoint-apiiotastart-redirect-flow---initiate-request)               |
-| `Create API for Iota Callback`                | Create API to get data from the [Iota Initiate request](#create-api-endpoint-apiiotaiota-response---get-requested-data) |
-| `Run Application`                             | Try the App with [Affinidi Login & Affinidi Iota Framework](#run-the-application-to-experience-affinidi-iota-framework) |
+| Content                           | Description                                                                                                             |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `Install dependencies`            | Install [dependencies](#install-dependencies)                                                                           |
+| `Affinidi Iota Framework config`  | Configure [Affinidi Iota Framework](#configure-affinidi-iota-configuration)                                             |
+| `Update .env files`               | Update [.env](#update-environment-variables) files                                                                      |
+| `Use useIotaQuery Hook`           | Initiate Iota Request using [custom hook](#use-react-custom-hook-useiotaquery-to-request-event-ticket-vc)               |
+| `Invoke Request on Event handler` | Invoke Iota initiation request inside the [handleShareTicket](#apply-action-on-button-click-handleshareticket-handler)  |
+| `Create API for Iota Request`     | Create API to initiate [Iota request](#create-api-endpoint-apiiotastart-redirect-flow---initiate-request)               |
+| `Create API for Iota Callback`    | Create API to get data from the [Iota Initiate request](#create-api-endpoint-apiiotaiota-response---get-requested-data) |
+| `Run Application`                 | Try the App with [Affinidi Login & Affinidi Iota Framework](#run-the-application-to-experience-affinidi-iota-framework) |
 
 > [!IMPORTANT]
 > This Module is an extension of the same Eventi App that we worked on for [**Module 1**](/docs/generate-app.md) & [**Module 2**](/docs/credentials-issuance.md).
@@ -42,7 +42,6 @@ Before proceeding with the steps below
 
 > [!WARNING]
 > The steps showcased in this sample application are provided only as a guide to quickly explore and learn how to integrate the components of Affinidi Trust Network into your application. This is NOT a Production-ready implementation. Please don't deploy this to a production environment.
-> &nbsp;
 
 Now, let's continue with the step-by-step guide to enable the Affinidi Iota framework in the sample App.
 
@@ -129,7 +128,7 @@ NEXT_PUBLIC_IOTA_EVENT_TICKET_QUERY=""
 
 #### Use React Custom Hook `useIotaQuery` to Request Event Ticket VC
 
-Open the verification component `src\components\Verification\index.tsx`, and the below code snippet which uses react custom hook to initiate the Affinidi Iota Request.
+Open the verification component `src\components\Verification\index.tsx`, and add the below code snippet which uses react custom hook to initiate the Affinidi Iota Request.
 
 ```javascript
 //React Custom Hook
@@ -139,7 +138,7 @@ const {
   errorMessage,
   dataRequest,
   data: iotaRequestData,
-} = useIotaQuery({ configurationId: iotaConfigId, openMode: OpenMode.Popup });
+} = useIotaQuery({ configurationId: iotaConfigId });
 
 useEffect(() => {
   if (!iotaRequestData) return;
@@ -167,21 +166,31 @@ const handleShareTicket = () => {
 
 Open the API Handler `src\pages\api\iota\start-redirect-flow.ts`, and add the Affinidi Iota Redirect flow logic which uses Affinidi TDK
 
-Note: This API is called in React Custom Hook `useIotaQuery` internally to initiate Affinidi Iota request.
+Note: This API is called in React Custom Hook `useIotaQuery` to initiate Affinidi Iota request.
 
 ```javascript
     //Add Affinidi Iota Redirect flow login using Affinidi TDK
+
+
+    // Read the below params from Iota initiate request body
+    // configurationId - Iota configuration Id
+    // queryId - Iota queryId (e.g. QueryId for PEX requesting Event Ticket VC)
+    // redirectUri - Callaback URL (should match with Redirect URLs in the Iota Configuration)
+    // nonce - A random Id generated from App to ensure the requestor is the reciever
     const { configurationId, queryId, redirectUri, nonce } =
       initShareSchema.parse(req.body);
 
+    //Initiatlize the Affinidi TDK with Personal Access Token details
     const authProvider = getAuthProvider();
 
+    //Initiatlize the Affinidi Iota API Object
     const api = new IotaApi(
       new Configuration({
         apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
       })
     );
 
+    // Initiate the Affinidi Iota API data request
     const { data: dataSharingRequestResponse } =
       await api.initiateDataSharingRequest({
         configurationId,
@@ -192,6 +201,9 @@ Note: This API is called in React Custom Hook `useIotaQuery` internally to initi
         redirectUri,
       });
 
+    // correlationId - Id generated from App
+    // transactionId - Id got from Affinidi Post Iota initiate request
+    // jwt - Access token used by Affinidi Vault to ensure Affinidi Iota request is valid
     const { correlationId, transactionId, jwt } =
       dataSharingRequestResponse.data as InitiateDataSharingRequestOKData;
 
@@ -202,20 +214,30 @@ Note: This API is called in React Custom Hook `useIotaQuery` internally to initi
 
 Open the API Handler `src\pages\api\iota\iota-response.ts`, and add the logic for getting the data from the initiated request using Affinidi TDK.
 
-Note: This API is called in React Custom Hook `useIotaQuery` internally to get the response from Affinidi Iota.
+Note: This API is called in React Custom Hook `useIotaQuery` to get the requested data from initiated request using Affinidi Iota Framework.
 
 ```javascript
     //Get the Requested data for initiated request using Affinidi Iota
+
+    // Read the below params from request body
+    // Response Code - We get this from the Iota callback URL
+    // configurationId - Iota configuration Id
+    // correlationId - Id generated from App during Iota initiate request
+    // transactionId - Id got from Affinidi Iota initiate request
     const { responseCode, configurationId, correlationId, transactionId } =
       responseSchema.parse(req.body);
 
+    //Initiatlize the Affinidi TDK with Personal Access Token details
     const authProvider = getAuthProvider();
 
+    //Initiatlize the Affinidi Iota API Object
     const api = new IotaApi(
       new Configuration({
         apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
       })
     );
+
+    // we exchange the VC data with response code
     const iotaVpResponse: FetchIOTAVPResponseOK = await api.fetchIotaVpResponse({
       configurationId,
       correlationId,
@@ -223,6 +245,7 @@ Note: This API is called in React Custom Hook `useIotaQuery` internally to get t
       responseCode,
     });
 
+    // Reading requested verfiable presentation data from Iota
     const vp = JSON.parse((iotaVpResponse.data as any).vpToken);
 
     res.status(200).json({ vp: vp, nonce: iotaVpResponse.data.nonce });
@@ -250,6 +273,6 @@ Open [http://localhost:3000/verification](http://localhost:3000/verification) wi
 
 ## More Resources for Advanced Learning
 
-- [Affinidi Credential Issuance Documentation](https://docs.affinidi.com/docs/affinidi-elements/credential-issuance/)
+- [Affinidi Documentation](https://docs.affinidi.com/docs/affinidi-elements/credential-issuance/)
 - [Affinidi Iota Framework](https://docs.affinidi.com/frameworks/iota-framework/)
 - [Affinidi Credential Verification](https://docs.affinidi.com/docs/affinidi-elements/credential-verification/)
