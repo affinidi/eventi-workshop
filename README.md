@@ -1,6 +1,6 @@
 # Event Management with Affinidi Trust Network
 
-In this workshop, you'll build [Next.js](https://nextjs.org/) application bootstrapped with [Affinidi CLI](https://docs.affinidi.com/dev-tools/affinidi-cli/generate-app/) using the Affinidi Trust Network (ATN) that feature passwordless authentication flows, verifiable credential issuance, and consent-driven data access powered by the Iota framework. You'll also implement open standards-based workflows for collecting, storing, and sharing data securely, creating privacy-centric digital identity solutions.
+In this workshop, you'll build [Next.js](https://nextjs.org/) application bootstrapped with [Affinidi CLI](https://docs.affinidi.com/dev-tools/affinidi-cli/generate-app/) using the Affinidi Trust Network (ATN) that feature passwordless authentication flows, verifiable credential issuance, and consent-driven data access powered by the Affinidi Iota Framework. You'll also implement open standards-based workflows for collecting, storing, and securely sharing data, creating privacy-centric digital identity solutions.
 
 ## What you will build?
 
