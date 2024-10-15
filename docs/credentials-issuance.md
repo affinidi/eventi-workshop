@@ -26,10 +26,6 @@ When issuing a Verifiable Credential, three main flows happen within the whole p
 
 ![Credential Offer Claim](./images/cis-claim.png)
 
-## What you will build?
-
-[![Affinidi Credential Issuance](/docs/images/Module2.png)](/docs/images/module2.mp4)
-
 ## Table of content
 
 | Content                                       | Description                                                                                                                                                           |

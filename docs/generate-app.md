@@ -6,10 +6,6 @@ This is a event management reference app (eventi) to demonstrate Zero party data
 
 we will use Affinidi CLI `generate app command` to kickstart your journey with Affinidi Trust Network by generating reference codes using different programming languages, frameworks, and IAM solutions.
 
-## What you will setup?
-
-[![Affinidi CLI Generate App](/docs/images/Module1.png)](/docs/images/module1.mp4)
-
 ## Table of content
 
 | Content                               | Description                                                                            |
