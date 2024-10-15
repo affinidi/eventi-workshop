@@ -152,13 +152,18 @@ Please read the generated README for instructions on how to run your sample app
 
 Start the development server:
 
-1. Install the dependencies
+1. Navigate to generated app directory
+   ```sh
+   cd affinidi-eventi-app
+   ```
+
+2. Install the dependencies
 
 ```sh
 npm install
 ```
 
-2. Run the application
+3. Run the application
 
 ```sh
 npm run dev
