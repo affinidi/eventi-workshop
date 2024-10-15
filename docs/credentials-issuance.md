@@ -91,7 +91,7 @@ You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
 - _Schema_ as `Manual Input`,
 - _Credential Type ID_ as `EventTicketVC`
 - _JSON Schema URL_ as `https://schema.affinidi.io/TEventTicketVCV1R0.json`
-- _JSDON-LD Context URL_ = `https://schema.affinidi.io/TEventTicketVCV1R0.jsonld`
+- _JSDON-LD Context URL_ as `https://schema.affinidi.io/TEventTicketVCV1R0.jsonld`
 
 > [!TIP]
 > You can create your own schema using by navigating to `Affinidi Schema Builder` under the `Services` section. For more details on `Schema Builder` refer to [Affinidi documentation](https://docs.affinidi.com/docs/affinidi-elements/schema-builder/).
@@ -101,7 +101,7 @@ You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
 
 ### Implement Application Code Changes
 
-On the checkout page, post purchase of the ticket, we are going to issue a ticket verifiable credential
+On the checkout page, post purchase of the ticket, we are going to issue a ticket as verifiable credential
 
 #### Open `src\components\Checkout\index.tsx` and add the below function `IssueTicketVC`(before `handlePay` event handler),
 
@@ -112,7 +112,7 @@ This function contains below logic:
 3. Generate **Affinidi Vault Claim link** from offer URL which can be store in Affinidi vault.
 
 ```javascript
-//Issue a Event Verifiable Credentail by calling Application Backend API
+//Issue a Event Verifiable Credential by calling Application Backend API
 const IssueTicketVC = async () => {
   setIsLoading(true);
 
