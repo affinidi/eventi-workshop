@@ -18,7 +18,7 @@ After creating a configuration, you can integrate the Affinidi Iota Framework in
 
 ## What you will build?
 
-![Affinidi Iota Framework](./images/iota.gif)
+[![Affinidi Iota Framework](/docs/images/Module3.png)](/docs/images/module3.mp4)
 
 ## Table of content
 

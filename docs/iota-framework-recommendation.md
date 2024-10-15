@@ -6,7 +6,7 @@ More Details on Affinidi Iota Framework is available on [Affinidi Documentation]
 
 ## What you will build?
 
-![Music Recommendations Sneak Peak](./images/iota-recoomendations.gif)
+[![Music Recommendations Sneak Peak](/docs/images/Module4.png)](/docs/images/module4.mp4)
 
 ## Table of content
 
