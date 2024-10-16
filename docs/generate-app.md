@@ -10,6 +10,8 @@ Using the `generate-app` feature of Affinidi CLI, you’ll quickly set up the ap
 
 You’ll manage user profiles with Affinidi Vault, a secure, user-friendly, confidential storage solution for digital identity data. Think of it as the user's personal safe, built on open standards similar to JWT, XML, and JSON—so it doesn’t rely on any proprietary tech for the shape of the data. The Vault lets users collect, store, and share cryptographically signed data (Verifiable Credentials) in a way that machines can trust. Not only that, the mechanisms for how the data is collected in the Vault and shared from the Vault is built on Open Identity protocols adding additional flexibility and implementation choice of the information is exchanged between applications and the User's Vault.
 
+Every app needs trusted user onboarding to build a relationship. In this module, you'll learn how verifying a user's email once can enhance sign-up experiences, improving on social logins. This method extends to other onboarding data, reusing attested facts with no extra changes—just leveraging the OIDC library in your React app for a seamless experience. The decentralized data store handles verified user data, all transported via existing OIDC tools with minimal app changes.
+
 ## Architecture
 
 ![Module 1 Architecture](./images/module1-architecture.png)
@@ -22,8 +24,8 @@ You’ll manage user profiles with Affinidi Vault, a secure, user-friendly, conf
 | ---- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
 | 1.   | [Setup development environment](#1-setup-development-environment)                                  | Complete the development environment setup for Affinidi CLI |
 | 2.   | [Install & Initiatlise Dev Tools - Affinidi CLI](#2-install--initiatlise-dev-tools---affinidi-cli) | Install latest version of Affinidi CLI                      |
-| 3.   | [Generate Eventi App](#3-generate-eventi-app-command)                                              | Generate Eventi App using Affinidi CLI                      |
-| 4.   | [Run Application](#4-test-the-newly-generated-eventi-app)                                          | Run the Eventi App                                          |
+| 3.   | [Generate Eventi App](#3-generate-eventi-app)                                              | Generate Eventi App using Affinidi CLI                      |
+| 4.   | [Run & Test the application](#4-test-the-newly-generated-eventi-app)                                          | Run the Eventi App                                          |
 
 <hr/>
 
@@ -165,6 +167,11 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser and try passwordless experience using `Affinidi Login`.
+
+
+> Congratulations! You’ve experienced how to request personal info from the user’s Affinidi Vault to simplify consumer onboarding. We understand the first module felt quick, thanks to the scaffolding already in place to help you get started fast. The integration process is nothing new—just using the standard OIDC library. In the next module, you’ll dive deeper, updating your app’s internals to integrate with the emerging Open Identity protocols.
+
+
 
 ## Next Module
 
