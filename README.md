@@ -6,14 +6,7 @@ In this session, you'll work on a real-world use case: event ticket management. 
 
 By the end of this workshop, you'll have a solid understanding of these technologies and learn how to integrate them into your React applications to build more secure, user-focused experiences that work seamlessly across digital or physical channels. 
 
-<details>
-<summary>Read more</summary>
-Digital identity is undergoing a significant transformation, influenced by multiple factors, to create verifiable data ecosystems, reduce intermediaries, and enable direct value exchange that establishes trust across systems and borders. In a world flooded with misinformation and where data is the new oil, developers must now work with trusted data—not just raw data—without the impracticality of calling hundreds of APIs in a fragmented consumer data world. 
-
-
-This is where the innovation from community groups like W3C and the OpenID Foundation has extended standards like OpenID Connect and OAuth 2.0 to support cryptographically signed digital proofs, allowing parties to collect and present verified data. The user now acts as the authorization server, shifting away from traditional intermediaries. Trust is established through cryptography, enabling a scalable and flexible system where multiple sources can attest to a fact about a user. For developers, this evolution simplifies the process by standardizing protocols for collecting and presenting verified data, leaving infrastructure choices open, thus ensuring interoperability and trust through cryptographically secure frameworks.
-
-</details>
+For more context, [click here to read more about evolution of digital identity.](/docs/digital-identity-overview.md)
 
 ## Workshop Objective
 
