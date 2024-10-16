@@ -1,6 +1,6 @@
 ## Issue Event Ticket as Verifiable Credential
 
-Eventi App wants to issue a digital verifiable credentials for their customers who purchased event tickets to enable digital trust.
+Eventi App will issue tickets as digitally verifiable credentials for their consumers who purchased event tickets to enable digital trust.
 
 Credential Issuance Service provides applications with secure methods of issuing and claiming credentials. It implements the [OID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) (OpenID for Verifiable Credential Issuance) protocol, which provides the mechanism for Issuers to issue Verifiable Credentials to Affinidi Vault users and obtain the credentials using the OAuth 2.0 authorisation flow.
 
@@ -8,7 +8,7 @@ More Details on Affinidi Credential Issuance Service is available on [Affinidi D
 
 ## Introduction
 
-We will use the `Eventi` app that we generated in [module 1](/docs/generate-app.md) and enable Affinidi Credentials Issuance Service to issue Event Tickets as digital verifiable credential. we will dive into the Credentials Issuance feature to issue tamper-evident digital credentials, enabling trust in digital interactions through the flow of portable trusted data.
+We will use the `Eventi` app that we generated in [Module 1](/docs/generate-app.md) and enable Affinidi Credentials Issuance Service to issue Event Tickets as digital verifiable credentials. We will dive into the Credentials Issuance feature to issue tamper-evident digital credentials, enabling trust in digital interactions through the flow of portable trusted data.
 
 ## Architecture
 
@@ -20,19 +20,19 @@ We will use the `Eventi` app that we generated in [module 1](/docs/generate-app.
 
 | S.No | Content                                                                                         | Description                                                                     |
 | ---- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| 1.   | [Setup development environment](#1-setup-development-environment)                               | Complete the development environment setup for Affinidi CLI                     |
-| 2.   | [Configure Credential Issuance Configuration](#2-install--initiatlise-dev-tools---affinidi-cli) | Configure Credential Issuance Configuration                                     |
-| 3.   | [Add Issuance Logic on Frontend](#3-add-issuance-logic-on-frontend)                             | Add `IssueTicketVC()` function inside checkout page                             |
-| 4.   | [Invoke the Issuance Logic](#4-invoke-the-issuance-logic)                                       | Invoke the Issuance Logic inside the event handler                              |
-| 5.   | [Create API endpoint for issuance](#5-create-api-endpoint-for-issuance)                         | Create API endpoint `/api/issuance/start` to event ticket VC using Affinidi TDK |
-| 6.   | [Run Application](#6-run-application)                                                           | Try the App with Affinidi Login & Affinidi Credentials Issuance Configuration   |
+| 1.   | [Install Affinidi Trust Development Kit (Affinidi TDK)](#1-install-affinidi-trust-development-kit-affinidi-tdk)                               | Import the Auth provider and Issuance Client packages to easily manage credential issuance                    |
+| 2.   | [Setup Credential Issuance Configuration](#2-setup-credential-issuance-configuration) | Select the **issuing wallet** and **supported schemas** for issuing ticket as Verifiable credentials                                    |
+| 3.   | [Add Verifiable Credential issuance capability](#3-add-verifiable-credential-issuance-capability-in-the-application)                             | Add `IssueTicketVC()` function inside checkout page                             |
+| 4.   | [Binding the event handlers for linking user actions to issuance](#4-binding-the-event-handlers)                                       | Invoke the Issuance Logic inside the event handler                              |
+| 5.   | [Setup Application Backend integration with Affinidi Services ](#5-setup-application-backend-integration-with-affinidi-services)                         | Create API endpoint `/api/issuance/start` to event ticket VC using Affinidi TDK |
+| 6.   | [Run & Test the application](#6-run-application)                                                           | Try the App with Affinidi Login & Affinidi Credentials Issuance Configuration   |
 
 > [!IMPORTANT]
 > This Module is an extension of the same Eventi App that we worked on for [**Module 1**](/docs/generate-app.md).
 
 <hr/>
 
-### 1. Setup development environment
+### 1. Install Affinidi Trust Development Kit (Affinidi TDK)
 
 Let's continue with the step-by-step guide to enable the Affinidi Credentials Issuance service in the sample App.
 
@@ -45,9 +45,9 @@ npm install @affinidi-tdk/auth-provider @affinidi-tdk/credential-issuance-client
 > [!IMPORTANT]
 > Personal Access Token (PAT) is like a machine user that acts on your behalf to the Affinidi services, which was automatically generated in previous module. If the automatic generation option was not selected in previous module, PAT can be generated manually using [Affinidi CLI](https://docs.affinidi.com/dev-tools/affinidi-cli/manage-token/#affinidi-token-create-token) command.
 
-### 2. Configure Credential Issuance Configuration
+### 2. Setup Credential Issuance Configuration
 
-To issue a Verifiable Credential, it is required to setup the **Issuance Configuration** on your project, where you select the **issuing wallet** and **supported schemas** to create a credential offer that the application issue.
+To issue a Verifiable Credential, it is required to setup the **Issuance Configuration** on your project, where you select the **issuing wallet** and **supported schemas** to create a credential offer that the application can issue.
 
 You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
 
@@ -80,7 +80,7 @@ You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
 > [!WARNING]
 > Ensure the `NEXT_PUBLIC_CREDENTIAL_TYPE_ID` value in the application's `.env` file matches the _Credential Type ID_.
 
-### 3. Add Issuance Logic on Frontend
+### 3. Add Verifiable Credential Issuance capability in the application
 
 On the checkout page, post purchase of the ticket, we are going to issue a ticket verifiable credential.
 
@@ -159,7 +159,7 @@ const IssueTicketVC = async () => {
   console.log("issuanceResponse", issuanceResponse);
 ```
 
-### 4. Invoke the Issuance Logic
+### 4. Binding the event handlers 
 
 Call the function `IssueTicketVC()` on the `handlePay` function
 
@@ -176,7 +176,7 @@ Update `handlePay` event handler function by calling `IssueTicketVC()` which pre
   };
 ```
 
-### 5. Create API endpoint for issuance
+### 5. Setup Application Backend integration with Affinidi Services
 
 Create API Endpoint `/api/issuance/start` which we have used in `IssueTicketVC()` function
 
