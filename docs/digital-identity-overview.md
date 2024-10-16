@@ -1,7 +1,12 @@
 # Evolution of Digital Identity
 
-Digital identity is a combination of identifiers like usernames, emails, or phone numbers and attributes about a person, such as demographics, interests, or purchase history. Together, these form a holistic view of the user’s identity in digital systems. Traditionally, companies store and manage this information in centralized databases, but this setup often leads to challenges with privacy, consent, and security.
+Digital identity is a combination of identifiers like usernames, emails, or phone numbers and attributes about a person, such as demographics, interests, or purchase history. Together, these form a holistic view of the user’s identity in digital systems. Traditionally, companies store and manage this information in centralized databases, but this setup often leads to challenges with privacy, consent, and security. 
 
+To overcome these challenges, Digital identity is undergoing a significant transformation, influenced by multiple factors, to create verifiable data ecosystems, reduce intermediaries, and enable direct value exchange that establishes trust across systems and borders. In a world flooded with misinformation and where data is the new oil, developers must now work with trusted data—not just raw data—without the impracticality of calling hundreds of APIs in a fragmented consumer data world.
+
+This is where the innovation from community groups like W3C and the OpenID Foundation has extended standards like OpenID Connect and OAuth 2.0 to support cryptographically signed digital proofs, allowing parties to collect and present verified data. The user now acts as the authorization server, shifting away from traditional intermediaries. Trust is established through cryptography, enabling a scalable and flexible system where multiple sources can attest to a fact about a user. 
+
+For developers, this evolution simplifies the process by standardizing protocols for collecting and presenting verified data, leaving infrastructure choices open, thus ensuring interoperability and trust through cryptographically secure frameworks.
 
 In the physical world, we build trust through simple actions—showing ID cards or sharing documents to verify who we are. Decentralized digital identity brings this human connection to the digital space, enabling users to control when and how their information is shared. Technologies like Decentralized Identifiers (DIDs) and Verifiable Credentials (VCs) let users share data securely with consent, while businesses can instantly verify it, reducing complexity and building trust.
 
