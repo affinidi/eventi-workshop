@@ -183,10 +183,10 @@ Open the API Handler `src\pages\api\iota\start-redirect-flow.ts`, and add the Af
     const { configurationId, queryId, redirectUri, nonce } =
       initShareSchema.parse(req.body);
 
-    //Initiatlize the Affinidi TDK with Personal Access Token details
+    //Initialise the Affinidi TDK with Personal Access Token details
     const authProvider = getAuthProvider();
 
-    //Initiatlize the Affinidi Iota API Object
+    //Initialise the Affinidi Iota API Object
     const api = new IotaApi(
       new Configuration({
         apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
@@ -230,10 +230,10 @@ Note: This API is called in React Custom Hook `useIotaQuery` to get the requeste
     const { responseCode, configurationId, correlationId, transactionId } =
       responseSchema.parse(req.body);
 
-    //Initiatlize the Affinidi TDK with Personal Access Token details
+    //Initialise the Affinidi TDK with Personal Access Token details
     const authProvider = getAuthProvider();
 
-    //Initiatlize the Affinidi Iota API Object
+    //Initialise the Affinidi Iota API Object
     const api = new IotaApi(
       new Configuration({
         apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),

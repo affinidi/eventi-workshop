@@ -101,9 +101,9 @@ You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
 
 ### Implement Application Code Changes
 
-On the checkout page, post purchase of the ticket, we are going to issue a ticket verifiable credential
+On the checkout page, post purchase of the ticket, we are going to issue a ticket verifiable credential.
 
-#### Open `src\components\Checkout\index.tsx` and add the below function `IssueTicketVC`(before `handlePay` event handler),
+#### Open `src\components\Checkout\index.tsx` and add the below function `IssueTicketVC`(before `handlePay` event handler)
 
 This function contains below logic:
 
@@ -116,7 +116,8 @@ This function contains below logic:
 const IssueTicketVC = async () => {
   setIsLoading(true);
 
-  //Prepare Data
+  //Prepare Data (the structure should match with Event Ticket VC Schema)
+  //TODO - Few attributes are hardcoded, we can get this during login by updating Login PEX to request more information like name/address/phonenumber/dob etc.. https://docs.affinidi.com/docs/affinidi-vault/affinidi-vault-data/personal-information/
   const ticketCredentailData = {
     event: items.map((item: any) => {
       return {
@@ -175,12 +176,11 @@ const IssueTicketVC = async () => {
     setIssuanceResponse(dataResponse);
   }
   console.log("issuanceResponse", issuanceResponse);
-};
 ```
 
-#### Call the function `IssueTicketVC` on the `handlePay` function
+#### Call the function `IssueTicketVC()` on the `handlePay` function
 
-Create `handlePay` function which prepares the event ticket VC data and invoke the Affinidi Credentials Issuance Service.
+Update `handlePay` event handler function by calling `IssueTicketVC()` which prepares the event ticket VC data and invoke the Affinidi Credentials Issuance Service.
 
 ```javascript
   //Event handler on successful payment
@@ -227,10 +227,10 @@ const apiData: StartIssuanceInput = {
   ],
 };
 
-//Initiatlize the Affinidi TDK with Personal Access Token details
+//Initialize the Affinidi TDK with Personal Access Token(PAT) details
 const authProvider = getAuthProvider();
 
-//Initiatlize the Affinidi Issuance API Object
+//Initialise the Affinidi Issuance API Object
 const api = new IssuanceApi(
   new Configuration({
     apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
