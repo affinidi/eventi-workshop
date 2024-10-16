@@ -1,4 +1,4 @@
-## Module 2: Issue Event Ticket as Verifiable Credential
+## Issue Event Ticket as Verifiable Credential
 
 Eventi App wants to issue a digital verifiable credentials for their customers who purchased event tickets to enable digital trust.
 
@@ -25,6 +25,10 @@ When issuing a Verifiable Credential, three main flows happen within the whole p
 - Credential Offer Claim [ default : **TX_CODE**]
 
 ![Credential Offer Claim](./images/cis-claim.png)
+
+## What you will build?
+
+![Affinidi Credential Issuance](./images/cis.gif)
 
 ## Table of content
 

@@ -4,6 +4,10 @@ We will use the same `Eventi App` which we worked on in modules 1 & module 2 and
 
 More Details on Affinidi Iota Framework is available on [Affinidi Documentation](https://docs.affinidi.com/frameworks/iota-framework/)
 
+## What you will build?
+
+![Music Recommendations Sneak Peak](./images/iota-recoomendations.gif)
+
 ## Table of content
 
 | Content                           | Description                                                                                                                                    |

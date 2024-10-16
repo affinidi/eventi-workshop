@@ -1,10 +1,14 @@
-# Module 1: Generating Event Management Application from Affinidi CLI With Affinidi Login
+# Generating Event Management Application from Affinidi CLI With Affinidi Login
 
 This is a event management reference app (eventi) to demonstrate Zero party data exchange, interoperability of data across business boundaries and consent based data management for applications using Affinidi Login, Affinidi Iota framework, Credential Issuance and Affinidi Vault
 
 ## Introduction
 
 we will use Affinidi CLI `generate app command` to kickstart your journey with Affinidi Trust Network by generating reference codes using different programming languages, frameworks, and IAM solutions.
+
+## What you will setup?
+
+![Affinidi CLI Generate App](/docs/images/generate-app.gif)
 
 ## Table of content
 
@@ -148,19 +152,13 @@ Please read the generated README for instructions on how to run your sample app
 
 Start the development server:
 
-1. Navigate to generated app directory
-
-   ```sh
-   cd affinidi-eventi-app
-   ```
-
-2. Install the dependencies
+1. Install the dependencies
 
 ```sh
 npm install
 ```
 
-3. Run the application
+2. Run the application
 
 ```sh
 npm run dev

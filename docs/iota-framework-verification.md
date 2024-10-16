@@ -16,6 +16,10 @@ After creating a configuration, you can integrate the Affinidi Iota Framework in
 
 ![Affinidi Iota Framework](./images/Iota.svg)
 
+## What you will build?
+
+![Affinidi Iota Framework](./images/iota.gif)
+
 ## Table of content
 
 | Content                           | Description                                                                                                             |
