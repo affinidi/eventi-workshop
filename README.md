@@ -46,19 +46,19 @@ The Affinidi Trust Network handles the complex trust infrastructure built with o
 
 ## What you will learn?
 
-- How to build a React application with a decentralized, user-controlled personal data store (Affinidi Vault) leveraging open standards for data models and secure data exchange enabling user-centric innovation where the application logs into the user—not the other way around.
+- How to build a **React application with a decentralized, user-controlled personal data store** (Affinidi Vault) leveraging open standards for data models and secure data exchange enabling user-centric innovation where the application logs into the user—not the other way around.
 
-- How to use the Affinidi Trust Development Kit (TDK) to build applications using open standards for decentralized identity and verifiable credentials, enabling digital credential issuance and verification creating portable trusted data that avoids phone home scenario.
+- How to use the **Affinidi Trust Development Kit** (TDK) to build applications using **open standards for decentralized identity and verifiable credentials**, enabling digital credential issuance and verification creating portable trusted data that avoids phone home scenario.
 
-- How to implement platform-agnostic verification process that can instantly confirm the credentials’ authenticity to enable dynamic eligibility checks.
+- How to implement **platform-agnostic verification process** that can instantly confirm the credentials’ authenticity to enable dynamic eligibility checks.
 
-- How Affinidi Dev tools make it easy to manage and integrate open standards based managed Affinidi services like Credential Issuance, Credential Verification among others, efficiently into your application to create interoperable data ecosystem.
+- How **Affinidi Dev tools** make it easy to manage and integrate **open standards** based managed Affinidi services like Credential Issuance, Credential Verification among others, efficiently into your application to create interoperable data ecosystem.
 
-  - Three (3) simple steps to issue attested credentials to users of your application that are reusable, verifiable and secure against fraud.
+  - Three (3) simple steps to **issue attested credentials** to users of your application that are reusable, verifiable and secure against fraud.
 
-  - Three (3) simple steps to create Verification Requests for your users to share the attested digital credentials.
+  - Three (3) simple steps to **create Verification Requests** for your users to share the attested digital credentials.
 
-  - Three (3) simple steps to request attested credentials for your users to prove their entitlements.
+  - Three (3) simple steps to **request attested credentials** for your users to prove their entitlements.
 
 By the end of the workshop, you’ll gain practical experience in building user-centric applications leveraging open identity protocols that foster more resilient architectures—free from intermediaries. With Affinidi’s open standards-based tech stack, you can establish trusted relationships through the exchange of tamper-evident data backed by cryptographic proofs. This approach enhances user engagement while defending against misinformation and fraud. Designed to meet modern compliance standards like GDPR and DPDPA, this architecture ensures user control and data security, putting the user at the center.
 
