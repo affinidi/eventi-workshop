@@ -4,35 +4,26 @@ In this workshop module, you'll create a baseline application code that serves a
 
 By the end of this module, you will have an application setup with Affinidi Login on your local dev environment to proceed with next steps of the workshop.
 
-
 ## Introduction
 
 Using the `generate-app` feature of Affinidi CLI, you’ll quickly set up the app’s baseline code, complete with the ticket management workflow and scaffolding for passwordless authentication using W3C Verifiable Credentials (VCs) — an open standard for secure, portable, digitally signed data that helps to establish transitive trust - verify once and use it anywhere. No more repeated OTPs or centralised password managers!
 
-You’ll manage user profiles with Affinidi Vault, a secure, user-friendly, confidential storage solution for digital identity data. Think of it as the user's personal safe, built on open standards similar to JWT, XML, and JSON—so it doesn’t rely on any proprietary tech for the shape of the data. The Vault lets users collect, store, and share cryptographically signed data (Verifiable Credentials) in a way that machines can trust. Not only that, the mechanisms for how the data is collected in the Vault and shared from the Vault is built on Open Identity protocols adding additional flexibility and implementation choice of the information is exchanged between appliations and the User's Vault. 
+You’ll manage user profiles with Affinidi Vault, a secure, user-friendly, confidential storage solution for digital identity data. Think of it as the user's personal safe, built on open standards similar to JWT, XML, and JSON—so it doesn’t rely on any proprietary tech for the shape of the data. The Vault lets users collect, store, and share cryptographically signed data (Verifiable Credentials) in a way that machines can trust. Not only that, the mechanisms for how the data is collected in the Vault and shared from the Vault is built on Open Identity protocols adding additional flexibility and implementation choice of the information is exchanged between applications and the User's Vault.
 
+## Architecture
 
-<!--
-Using the `generate-app` feature of Affinidi CLI, you’ll quickly set up the application’s baseline code, complete with the ticket management workflow and scaffolding for passwordless authentication using W3C Verifiable Credentials (VCs).
--->
+![Module 1 Architecture](./images/module1-architecture.png)
 
-<!--
-## What you will setup?
-
-
-![Affinidi CLI Generate App](/docs/images/generate-app.gif)
--->
+## What you will experience
 
 ## Steps to complete application setup
 
-|S.No | Content                               | Description                                                                            |
-|-----| ------------------------------------- | -------------------------------------------------------------------------------------- |
-| 1.  | Setup development environment         | Complete the [development environment setup](#1-setup-development-environment) for Affinidi CLI                          |
-| 2.  | Install Affinidi CLI               | Install latest version of [Affinidi CLI](#2-install-affinidi-cli)                        |
-| 3.  | Initialise Session                  | Start Using the [Affinidi CLI](#3-initialise-session)                                    |
-| 4.  | Generate Eventi App                 | Generate Eventi App using [Affinidi CLI](#5-generate-eventi-app-command)                 |
-| 5.  | Run Application                     | Run the [Eventi App](#6-test-the-newly-generated-eventi-app)                             |
-| 6.  | (Optional) Understanding Affinidi CLI Commands | Learn more on how to use [Affinidi CLI Commands](#4-understanding-affinidi-cli-commands) |
+| S.No | Content                                                                                            | Description                                                 |
+| ---- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| 1.   | [Setup development environment](#1-setup-development-environment)                                  | Complete the development environment setup for Affinidi CLI |
+| 2.   | [Install & Initiatlise Dev Tools - Affinidi CLI](#2-install--initiatlise-dev-tools---affinidi-cli) | Install latest version of Affinidi CLI                      |
+| 3.   | [Generate Eventi App](#3-generate-eventi-app-command)                                              | Generate Eventi App using Affinidi CLI                      |
+| 4.   | [Run Application](#4-test-the-newly-generated-eventi-app)                                          | Run the Eventi App                                          |
 
 <hr/>
 
@@ -48,14 +39,14 @@ To complete this workshop, you would require few tools as listed below.
 > [!NOTE]
 > For this workshop, it’s recommended to avoid using a Cloud IDE like GitPod (https://www.gitpod.io/) due to potential challenges that could arise. However, if you're more comfortable with a Cloud IDE, feel free to explore it, keeping in mind that the setup process might differ from the guided instructions.
 
+### 2. Install & Initiatlise Dev Tools - Affinidi CLI
 
-### 2. Install Affinidi CLI
-
-Install the latest version of Affinidi CLI.
+#### Install the latest version of Affinidi CLI.
 
 ```sh
 npm install -g @affinidi/cli
 ```
+
 <details>
 <summary>Troubleshooting if required</summary>
 
@@ -68,10 +59,9 @@ npm uninstall -g @affinidi/cli
 npm install -g @affinidi/cli
 ```
 
-
 </details>
 
-### 3. Initialise session 
+#### Initialise Affinidi CLI 
 
 Accessing most Affinidi CLI features, like creating a Login Configuration, requires you to authenticate to Affinidi using Affinidi Vault. To do this, you can execute the following command.
 
@@ -79,9 +69,11 @@ Accessing most Affinidi CLI features, like creating a Login Configuration, requi
 affinidi start
 ```
 
+For More details refer to the [Affinidi CLI](https://docs.affinidi.com/dev-tools/affinidi-cli/#understanding-commands) Documentation
+
 If you received a `session expired` error, just run the same command to refresh your session.
 
-### 4. Generate Eventi App
+### 3. Generate Eventi App
 
 ```sh
 affinidi generate app --provider=affinidi --framework=usecase --library=eventi --path=affinidi-eventi-app
@@ -156,7 +148,7 @@ Please read the generated README for instructions on how to run your sample app
 > PASSPHRASE="<mark>PASSPHRASE</mark>"
 > </code></pre>
 
-## 5. Test the newly generated eventi app
+## 4. Test the newly generated eventi app
 
 Start the development server:
 
@@ -173,23 +165,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser and try passwordless experience using `Affinidi Login`.
-
-### 6. (Optional) Understanding Affinidi CLI Commands
-
-Commands in Affinidi CLI have the following structure
-
-```
-affinidi <topic> <command> [flags]
-```
-
-- All commands start with the keyword `affinidi`.
-- Topics typically correspond to Affinidi services or domains.
-- Commands correspond to the actions to perform.
-- Flags are a way to provide the parameters required by the command.
-- Use `affinidi help <topic|command>` to show the helpful details.
-
-For More details refer to the [Affinidi CLI](https://docs.affinidi.com/dev-tools/affinidi-cli/#understanding-commands) Documentation
-
 
 ## Next Module
 
