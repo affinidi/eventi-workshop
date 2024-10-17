@@ -121,7 +121,7 @@ NEXT_PUBLIC_IOTA_MUSIC_RECOMMEND_QUERY=""
 
 ### 4. Use useIotaQuery React Custom Hook
 
-Use React Custom Hook `useIotaQuery` to Request Event Ticket VC
+Use React Custom Hook `useIotaQuery` to Request Music Preferences
 
 Open the Landing Page component `src\components\LandingPage\index.tsx` which displays list of events, and add the below code snippet which uses react custom hook to initiate the Affinidi Iota Request.
 
