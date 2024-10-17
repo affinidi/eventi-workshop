@@ -74,7 +74,7 @@ npm install @affinidi-tdk/auth-provider @affinidi-tdk/credential-issuance-client
       - _Schema_ as `Manual Input`,
       - _Credential Type ID_ as `EventTicketVC`
       - _JSON Schema URL_ as `https://schema.affinidi.io/TEventTicketVCV1R0.json`
-      - _JSDON-LD Context URL_ = `https://schema.affinidi.io/TEventTicketVCV1R0.jsonld`
+      - _JSDON-LD Context URL_ as `https://schema.affinidi.io/TEventTicketVCV1R0.jsonld`
 
       You should expect to see the message _Issuance configuration has been created successfully._ on the Developer portal to confirm the configuration setup is complete.
 
@@ -100,7 +100,7 @@ npm install @affinidi-tdk/auth-provider @affinidi-tdk/credential-issuance-client
       
 
    ```javascript
-   //Issue a Event Verifiable Credentail by calling Application Backend API
+   //Issue a Event Verifiable Credential by calling Application Backend API
    const IssueTicketVC = async () => {
      setIsLoading(true);
    
