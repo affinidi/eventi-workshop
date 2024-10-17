@@ -12,8 +12,6 @@ We will use the same `Eventi App` which we worked on in modules 1 & module 2 and
 
 ![Module 3 Architecture](./images/module3-architecture.png)
 
-## What you will experience
-
 ## Steps to complete application setup
 
 | S.No | Content                                                                     | Description                                                     |

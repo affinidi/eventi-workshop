@@ -4,7 +4,7 @@ Welcome to this 90-minute workshop where React developers will learn how to buil
 
 In this session, you'll work on a real-world use case: **event ticket management**. _The tickets will be issued as digitally signed data, and the relying application will verify them instantly—without needing a trusted intermediary._ The data is tamper-evident, and the open standards-based interfaces give you flexibility and choice in the tools you use.
 
-By the end of this workshop, you'll have a solid understanding of [W3C Decentalised identifiers](https://www.w3.org/TR/did-core/) and [W3C Verifiable Credentials](https://www.w3.org/TR/vc-data-model-1.1/) technologies without blockchain and learn how to integrate them into your React applications to build more secure, user-focused experiences that work seamlessly across digital or physical channels. 
+By the end of this workshop, you'll have a solid understanding of [W3C Decentalised identifiers](https://www.w3.org/TR/did-core/) and [W3C Verifiable Credentials](https://www.w3.org/TR/vc-data-model-1.1/) technologies without blockchain and learn how to integrate them into your React applications to build more secure, user-focused experiences that work seamlessly across digital or physical channels.
 
 For more context, [click here to read more about evolution of digital identity.](/docs/digital-identity-overview.md)
 
@@ -18,10 +18,10 @@ Gain a fundamental understanding of building next-gen applications through Holis
 4. Foster long-term trusted relationships with users
 5. Improve efficiency in entitlement and eligibility checks
 
-
 ## What will you build?
 
 <!--Event Ticket Management with Affinidi Trust Network -->
+
 _If you’re eager to dive in and start building, feel free to skip this section and [get started](/workshop-module-summary) with step-by-step instructions._
 
 You’ll build a simple event ticket management app with Next.js in under 90 minutes, integrating it with new Open Identity protocols. Using the `generate-app` feature of Affinidi CLI, you’ll quickly set up the application’s baseline code, complete with the ticket management workflow and scaffolding for seamless consumer onboarding with passwordless authentication using W3C Verifiable Credentials (VCs) — an open standard for secure, portable, digitally signed data that helps to establish transitive trust - verify once and use it anywhere. No more repeated OTPs or centralised password managers as a start and then you may add more to reduce the time and effort required to enter and verify additional information for consumer onboarding like name, phone number, age, etc.
@@ -49,8 +49,7 @@ Build React apps with Open Identity protocols, letting users control their data 
 2. **Platform-Agnostic Credential Verification:** Implement cross-platform verification for instant credential authenticity and dynamic checks.
 
 3. **Affinidi Dev Tools for Open Standards:** Easily integrate Affinidi services like Verifiable Credential Issuance and Verification into applications.
---> 
-
+-->
 
 <!--
 - How to build a **React application with a decentralised, user-controlled personal data store** (Affinidi Vault) leveraging open standards for data models and secure data exchange enabling user-centric innovation where the application logs into the user—not the other way around.
@@ -60,7 +59,7 @@ Build React apps with Open Identity protocols, letting users control their data 
 - How to implement **platform-agnostic verification process** that can instantly confirm the credentials’ authenticity to enable dynamic eligibility checks.
 
 - How **Affinidi Dev tools** make it easy to manage and integrate **open standards** based, managed Affinidi services like Affinidi Credential Issuance, Affindii Credential Verification, Affinidi Iota Framework among others, efficiently into your application to create interoperable data ecosystem.
---> 
+-->
 
 <!--
   - Three (3) simple steps to **issue attested credentials** to users of your application that are reusable, verifiable and secure against fraud.
@@ -68,23 +67,20 @@ Build React apps with Open Identity protocols, letting users control their data 
   - Three (3) simple steps to **create Verification Requests** for your users to share the attested digital credentials.
 
   - Three (3) simple steps to **request attested credentials** for your users to prove their entitlements.
---> 
+-->
 
-
-
-## Workshop module summary 
+## Workshop module summary
 
 The workshop is structured into three key modules and one optional module if you finish early and have time to try out one more scenario of consent-driven data access. Even if you're new to this technology, each module is designed to take just 10-15 minutes. We understand learning something new can feel challenging, and we've made sure to keep the time manageable so you can progress comfortably at your own pace.
 
 - [1: Setup workspace](/docs/generate-app.md)
-- [2: Issue Event Ticket as Verifiable Credential](/docs/credentials-issuance.md) 
+- [2: Issue Event Ticket as Verifiable Credential](/docs/credentials-issuance.md)
 - [3: Building User Consent-Driven Data Access for Instant Verification without intermediary](/docs/iota-framework-verification.md)
 - [4: (Optional) Building Consent-Driven Data Access for Hyper-personal Recommendations using Zero Party Data](/docs/iota-framework-recommendation.md)
 
-
 <!--
 By the end of the workshop, you’ll gain practical experience in building user-centric applications leveraging open identity protocols that foster more resilient architectures—free from intermediaries. With Affinidi’s open standards-based tech stack, you can establish trusted relationships through the exchange of tamper-evident data backed by cryptographic proofs. This approach enhances user engagement while defending against misinformation and fraud. Designed to meet modern compliance standards like GDPR and DPDPA, this architecture ensures user control and data security, putting the user at the center.
---> 
+-->
 
 <!--
 ## What you will build?
@@ -114,22 +110,20 @@ By the end of the workshop, you’ll gain practical experience in building user-
   - Estimated time to complete the module: **5 min**
 
 
---> 
+-->
 
 By the end of these modules, you'll have a comprehensive understanding of how to leverage the developer tools from Affinidi Trust Network (ATN) to build robust, user-centric interoperable applications.
 
-Here is a sneak peek into the consumer experience you will be building in the next 90 minutes, leveraging decentralised identity and verifiable credentials. Let's start with [Module 1: Setup workspace](/docs/generate-app.md). 
-
+Here is a sneak peek into the consumer experience you will be building in the next 90 minutes, leveraging decentralised identity and verifiable credentials. Let's start with [Module 1: Setup workspace](/docs/generate-app.md).
 
 ![Affinidi ATN Workshop](/docs/images/workshop.gif)
-
 
 > [!WARNING]
 > This sample application are provided only as a guide to quickly explore and learn how to integrate the components of Affinidi Trust Network that reduce the effort required to add Open Identity protocols based information exchange into your application. This is NOT a Production-ready implementation. **Please don't deploy this to a production environment.**
 
+## Food for thought
 
-## Food for thought 
-While the use case for the workshop was kept simple, push your imagination to think of how to solve real-world problems with the power of cryptographic trust that can work seamlessly across channels - digital or offline or assisted flows. For example, in Event and ticketing industry, can the use of Identity verification along with proof of ticket ownership reduce ticket fraud? how can one reimagine ticket resales with digital delegation to have audit trail of who sold the ticket to whom? Is there additional value in knowing if the visitor had also been to other events of similar type in the consumer onboarding flow to enable hyper-personal consumer experience based on better understanding of the visitor? Can we use the digital instant verification to improve physical queue management for swags by making it available through an online site where you share the proof of attendance along with your verified address to send the swag directly or engage other partners to scale the swag distribution without worrying about training of the staff or reconciliation? 
+While the use case for the workshop was kept simple, push your imagination to think of how to solve real-world problems with the power of cryptographic trust that can work seamlessly across channels - digital or offline or assisted flows. For example, in Event and ticketing industry, can the use of Identity verification along with proof of ticket ownership reduce ticket fraud? how can one reimagine ticket resales with digital delegation to have audit trail of who sold the ticket to whom? Is there additional value in knowing if the visitor had also been to other events of similar type in the consumer onboarding flow to enable hyper-personal consumer experience based on better understanding of the visitor? Can we use the digital instant verification to improve physical queue management for swags by making it available through an online site where you share the proof of attendance along with your verified address to send the swag directly or engage other partners to scale the swag distribution without worrying about training of the staff or reconciliation?
 
 ## Read More
 

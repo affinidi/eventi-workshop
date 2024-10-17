@@ -14,8 +14,6 @@ We will use the `Eventi` app that we generated in [Module 1](/docs/generate-app.
 
 ![Module 2 Architecture](./images/module2-architecture.png)
 
-## What you will experience?
-
 ## Steps to complete application setup
 
 | S.No | Content                                                                                         | Description                                                                     |

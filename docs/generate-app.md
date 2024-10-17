@@ -14,8 +14,6 @@ Every app needs trusted user onboarding to build a relationship. In this module,
 
 ![Module 1 Architecture](./images/module1-architecture.png)
 
-## What you will experience?
-
 ## Steps to complete application setup
 
 | S.No | Content                                                                                            | Description                                                 |
@@ -178,7 +176,7 @@ npm install
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser and try passwordless experience using `Affinidi Login`.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser and try passwordless experience using `Affinidi Login`.
 
 
 > Congratulations! You’ve experienced how to request personal info from the user’s Affinidi Vault to simplify consumer onboarding. We understand the first module felt quick, thanks to the scaffolding already in place to help you get started fast. The integration process is nothing new—just using the standard OIDC library. In the next module, you’ll dive deeper, updating your app’s internals to integrate with the emerging Open Identity protocols.
