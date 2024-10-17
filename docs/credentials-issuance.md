@@ -20,11 +20,11 @@ We will use the `Eventi` app that we generated in [Module 1](/docs/generate-app.
 
 | S.No | Content                                                                                         | Description                                                                     |
 | ---- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| 1.   | [Install Affinidi Trust Development Kit (Affinidi TDK)](#1-install-affinidi-trust-development-kit-affinidi-tdk)                               | Import the Auth provider and Issuance Client packages to easily manage credential issuance                    |
+| 1.   | [Install Affinidi Trust Development Kit (TDK)](#1-install-affinidi-trust-development-kit-affinidi-tdk)                               | Import the `Auth provider` and `Issuance Client` packages to easily manage credential issuance                    |
 | 2.   | [Setup Credential Issuance Configuration](#2-setup-credential-issuance-configuration) | Select the **issuing wallet** and **supported schemas** for issuing ticket as Verifiable credentials                                    |
-| 3.   | [Add Verifiable Credential issuance capability](#3-add-verifiable-credential-issuance-capability-in-the-application)                             | Add `IssueTicketVC()` function inside checkout page                             |
+| 3.   | [Setup application frontend integration](#3-add-verifiable-credential-issuance-capability-in-the-application)                             | Add `IssueTicketVC()` function inside checkout page for Verifiable Credential issuance                        |
 | 4.   | [Bind the event handlers](#4-binding-the-event-handlers)                                       | Link the user actions to issuance flow                            |
-| 5.   | [Setup Application Backend integration ](#5-setup-application-backend-integration-with-affinidi-services)                         | Create API endpoint `/api/issuance/start` to issue Event ticket VC Offer using Affinidi TDK |
+| 5.   | [Setup application backend integration ](#5-setup-application-backend-integration-with-affinidi-services)                         | Create API endpoint `/api/issuance/start` to issue Event ticket VC Offer using Affinidi TDK |
 | 6.   | [Run & Test the application](#6-run-application)                                                           | Try the app with Affinidi Login & Affinidi Credentials Issuance Configuration   |
 
 > [!IMPORTANT]
@@ -44,6 +44,8 @@ npm install @affinidi-tdk/auth-provider @affinidi-tdk/credential-issuance-client
 
 > [!IMPORTANT]
 > Personal Access Token (PAT) is like a machine user that acts on your behalf to the Affinidi services, which was automatically generated in previous module. If the automatic generation option was not selected in previous module, PAT can be generated manually using [Affinidi CLI](https://docs.affinidi.com/dev-tools/affinidi-cli/manage-token/#affinidi-token-create-token) command.
+
+<hr/>
 
 ### 2. Setup Credential Issuance Configuration
 
@@ -79,6 +81,8 @@ You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
 
 > [!WARNING]
 > Ensure the `NEXT_PUBLIC_CREDENTIAL_TYPE_ID` value in the application's `.env` file matches the _Credential Type ID_.
+
+<hr/>
 
 ### 3. Add Verifiable Credential Issuance capability in the application
 
@@ -159,6 +163,8 @@ const IssueTicketVC = async () => {
   console.log("issuanceResponse", issuanceResponse);
 ```
 
+<hr/>
+
 ### 4. Binding the event handlers 
 
 Call the function `IssueTicketVC()` on the `handlePay` function
@@ -175,6 +181,8 @@ Update `handlePay` event handler function by calling `IssueTicketVC()` which pre
     IssueTicketVC();
   };
 ```
+
+<hr/>
 
 ### 5. Setup Application Backend integration with Affinidi Services
 
@@ -232,7 +240,9 @@ const { credentialOfferUri, txCode, issuanceId, expiresIn } =
 res.status(200).json({ credentialOfferUri, txCode, issuanceId, expiresIn });
 ```
 
-### 6. Run Application
+<hr/>
+
+### 6. Run & test the application
 
 Run The application to experience Affinidi Credentials Issuance
 
