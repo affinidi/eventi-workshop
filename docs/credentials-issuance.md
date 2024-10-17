@@ -254,6 +254,9 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result .
 
+> Congratulations! You’ve experienced how to issue Event ticket as W3C Verifiable Credentials to the user’s Affinidi Vault. The user would now be able to manage and reuse this information without dependency on the Eventi application. In the next module, you’ll dive deeper, on how a relying application like Event access management software can request this digitally signed file from the user directly without reliance on intermediaries using Open Identity protocol (OID4VP) to establish trust that the user is the rightful owner of this ticket. You will also learn how the developer experience is simplified by Affinidi Iota Framework reducing the lines of code and effort required for applciation developers to adopt this emerging technology in their application. 
+
+
 ## Next Module
 
 - [**Module 3: Building Consent-Driven Data Access for Verification**](/docs/iota-framework-verification.md)
