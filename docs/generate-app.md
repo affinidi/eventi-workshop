@@ -14,7 +14,7 @@ Every app needs trusted user onboarding to build a relationship. In this module,
 
 ![Module 1 Architecture](./images/module1-architecture.png)
 
-## What you will experience
+## What you will experience?
 
 ## Steps to complete application setup
 
