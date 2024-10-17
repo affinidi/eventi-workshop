@@ -53,7 +53,7 @@ Add New Presentation Definition for requesting music preferences in Affinidi Iot
 
 4. Click `Edit` button under `Create Presentation Definitions` section to add new presentation definition for requesting music recommendations
 
-5. Click `+ Add` button and providing the name of the Presentation Definition as `Music Recommendations` and then select from the available templates to pre-populate the editor and modify with the below presentation definition to request `Music Recommendations Credential` from the Affinidi Vault.
+5. Click `+ Add` button and providing the name of the Presentation Definition as `Music preferences` and then select from the available templates to pre-populate the editor and modify with the below presentation definition to request `Music Recommendations Credential` from the Affinidi Vault.
 
 ```Json
 {
@@ -108,7 +108,7 @@ Add New Presentation Definition for requesting music preferences in Affinidi Iot
 }
 ```
 
-7. Click on `Create` button, `QueryId` for requesting Event Ticket VC is generated.
+7. Click on `Create` button, `QueryId` for requesting Music Preferences is generated.
 
 ### 3. Update .env files
 
