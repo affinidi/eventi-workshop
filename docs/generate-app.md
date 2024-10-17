@@ -160,14 +160,19 @@ Please read the generated README for instructions on how to run your sample app
 ## 4. Run and test the consumer onboarding experience using Affinidi Login on Eventi application  
 
 Start the development server:
+1. Change the directory to newly generated app
 
-1. Install the dependencies
+```sh
+cd affinidi-eventi-app
+```
+
+2. Install the dependencies
 
 ```sh
 npm install
 ```
 
-2. Run & test the application
+3. Run & test the application
 
 ```sh
 npm run dev

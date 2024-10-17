@@ -106,7 +106,7 @@ npm install @affinidi-tdk/auth-provider @affinidi-tdk/credential-issuance-client
    
      //Prepare Data (the structure should match with Event Ticket VC Schema)
      //TODO - Few attributes are hardcoded, we can get this during login by updating Login PEX to request more information like name/address/phonenumber/dob etc.. https://docs.affinidi.com/docs/affinidi-vault/affinidi-vault-data/personal-information/
-     const ticketCredentailData = {
+     const ticketCredentialData = {
        event: items.map((item: any) => {
          return {
            eventId: item.product.itemid?.toString(),
@@ -137,7 +137,7 @@ npm install @affinidi-tdk/auth-provider @affinidi-tdk/credential-issuance-client
      const response = await fetch("/api/issuance/start", {
        method: "POST",
        body: JSON.stringify({
-         credentialData: ticketCredentailData,
+         credentialData: ticketCredentialData,
          credentialTypeId: eventTicketVCTypeID,
          claimMode: StartIssuanceInputClaimModeEnum.FixedHolder,
        }),
