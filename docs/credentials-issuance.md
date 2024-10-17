@@ -49,32 +49,34 @@ npm install @affinidi-tdk/auth-provider @affinidi-tdk/credential-issuance-client
 
 ### 2. Setup Credential Issuance Configuration
 
-To issue a Verifiable Credential, it is required to setup the **Issuance Configuration** on your project, where you select the **issuing wallet** and **supported schemas** to create a credential offer that the application can issue.
+- To issue a Verifiable Credential, it is required to setup the **Issuance Configuration** on your project, where you select the **issuing wallet** and **supported schemas** to create a credential offer that the application can issue.
 
-You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
+- You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
 
-1. Login on [Affinidi Portal](https://portal.affinidi.com)
+   1. Login on [Affinidi Portal](https://portal.affinidi.com)
+   
+   2. Open the `Wallets` menu under the `Affinidi Elements` section and click on `Create Wallet` with any name (e.g. `MyWallet`) and DID method as `did:key`. This helps to setup Organisational identity for Eventi application that is used to sign the Event Ticket Verfiable Credentials later. 
+   
+      For more information, refer to the [Wallets documentation](https://docs.affinidi.com/dev-tools/wallets)
+   
+   3. Go to `Credential Issuance Service` under the `Affinidi Elements` section.
+   
+   4. Click on `Create Configuration` and set the following fields:
+   
+      - `Name of configuration` as `myCISConfig`
+      - `Issuing Wallet`: Select Wallet Created the previous step
+      - `Lifetime of Credential Offer` as `600`
+   
+   5. Add schemas by clicking on "Add new item" under `Supported Schemas`
+   
+      **Schema 1** :
+      
+      - _Schema_ as `Manual Input`,
+      - _Credential Type ID_ as `EventTicketVC`
+      - _JSON Schema URL_ as `https://schema.affinidi.io/TEventTicketVCV1R0.json`
+      - _JSDON-LD Context URL_ = `https://schema.affinidi.io/TEventTicketVCV1R0.jsonld`
 
-2. Open the `Wallets` menu under the `Tools` section and click on `Create Wallet` with any name (e.g. `MyWallet`) and DID method as `did:key`.
-
-   For more information, refer to the [Wallets documentation](https://docs.affinidi.com/dev-tools/wallets)
-
-3. Go to `Credential Issuance Service` under the `Services` section.
-
-4. Click on `Create Configuration` and set the following fields:
-
-   - `Name of configuration` as `myCISConfig`
-   - `Issuing Wallet`: Select Wallet Created the previous step
-   - `Lifetime of Credential Offer` as `600`
-
-5. Add schemas by clicking on "Add new item" under `Supported Schemas`
-
-**Schema 1** :
-
-- _Schema_ as `Manual Input`,
-- _Credential Type ID_ as `EventTicketVC`
-- _JSON Schema URL_ as `https://schema.affinidi.io/TEventTicketVCV1R0.json`
-- _JSDON-LD Context URL_ = `https://schema.affinidi.io/TEventTicketVCV1R0.jsonld`
+      You should expect to see the message _Issuance configuration has been created successfully._ on the Developer portal to confirm the configuration setup is complete.
 
 > [!TIP]
 > You can create your own schema using by navigating to `Affinidi Schema Builder` under the `Services` section. For more details on `Schema Builder` refer to [Affinidi documentation](https://docs.affinidi.com/docs/affinidi-elements/schema-builder/).
@@ -86,90 +88,92 @@ You can easily do this using the [Affinidi Portal](https://portal.affinidi.com)
 
 ### 3. Add Verifiable Credential Issuance capability in the application
 
-On the checkout page, post purchase of the ticket, we are going to issue a ticket verifiable credential.
+- On the checkout page, post purchase of the ticket, we are going to issue a ticket as Verifiable Credential.
 
-Open `src\components\Checkout\index.tsx` and add the below function `IssueTicketVC`(before `handlePay` event handler)
+- Open `src\components\Checkout\index.tsx` and add the below function `IssueTicketVC`(before `handlePay` event handler)
 
-This function contains below logic:
+   This function performs the following tasks:
+   
+   1. Prepares event ticket credential data from the purchased ticket details
+   2. Calls Eventi's Application API `/api/issuance/start` (we are going to create this API endpoint in the next step) to issue an **Event Ticket Credential offer URL**
+   3. Generates **Affinidi Vault Claim link** from the Offer URL which can be shared with the Affinidi vault.
+      
 
-1. Prepare event ticket credential data from the purchased ticket details
-2. Call Eventi's API `/api/issuance/start` (we are going to create the API endpoint in next step) to issue a **Event Ticket Credential offer URL**
-3. Generate **Affinidi Vault Claim link** from offer URL which can be store in Affinidi vault.
-
-```javascript
-//Issue a Event Verifiable Credentail by calling Application Backend API
-const IssueTicketVC = async () => {
-  setIsLoading(true);
-
-  //Prepare Data (the structure should match with Event Ticket VC Schema)
-  //TODO - Few attributes are hardcoded, we can get this during login by updating Login PEX to request more information like name/address/phonenumber/dob etc.. https://docs.affinidi.com/docs/affinidi-vault/affinidi-vault-data/personal-information/
-  const ticketCredentailData = {
-    event: items.map((item: any) => {
-      return {
-        eventId: item.product.itemid?.toString(),
-        name: item.product.name,
-        location: item.product.location,
-        startDate: item.product.startDate,
-        endDate: item.product.endDate,
-      };
-    })[0],
-    ticket: items.map((item: any) => {
-      return {
-        ticketId: item.product.itemid?.toString(),
-        ticketType: item.product.name,
-        seat: item.product.description,
-      };
-    })[0],
-    createdAt: new Date(),
-    attendeeAtrributes: {
-      email: consumer.user.email,
-      firstName: consumer.user.givenName || "John",
-      lastName: consumer.user.familyName || "Doe",
-      dateOfBirth: consumer.user.birthdate || "2010-10-17",
-    },
-    secrete: date,
-  };
-
-  //Call API to start VC issuance
-  const response = await fetch("/api/issuance/start", {
-    method: "POST",
-    body: JSON.stringify({
-      credentialData: ticketCredentailData,
-      credentialTypeId: eventTicketVCTypeID,
-      claimMode: StartIssuanceInputClaimModeEnum.FixedHolder,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (!response.ok) {
-    console.log("Error in issuing credential");
-    return;
-  }
-
-  let dataResponse = await response.json();
-  console.log("dataResponse", dataResponse);
-
-  setIsLoading(false);
-
-  //Generate claim link to affinidi vault from offer URL
-  if (dataResponse.credentialOfferUri) {
-    const vaultLink = VaultUtils.buildClaimLink(
-      dataResponse.credentialOfferUri
-    );
-    setVaultLink(vaultLink);
-    setIssuanceResponse(dataResponse);
-  }
-  console.log("issuanceResponse", issuanceResponse);
-```
+   ```javascript
+   //Issue a Event Verifiable Credentail by calling Application Backend API
+   const IssueTicketVC = async () => {
+     setIsLoading(true);
+   
+     //Prepare Data (the structure should match with Event Ticket VC Schema)
+     //TODO - Few attributes are hardcoded, we can get this during login by updating Login PEX to request more information like name/address/phonenumber/dob etc.. https://docs.affinidi.com/docs/affinidi-vault/affinidi-vault-data/personal-information/
+     const ticketCredentailData = {
+       event: items.map((item: any) => {
+         return {
+           eventId: item.product.itemid?.toString(),
+           name: item.product.name,
+           location: item.product.location,
+           startDate: item.product.startDate,
+           endDate: item.product.endDate,
+         };
+       })[0],
+       ticket: items.map((item: any) => {
+         return {
+           ticketId: item.product.itemid?.toString(),
+           ticketType: item.product.name,
+           seat: item.product.description,
+         };
+       })[0],
+       createdAt: new Date(),
+       attendeeAtrributes: {
+         email: consumer.user.email,
+         firstName: consumer.user.givenName || "John",
+         lastName: consumer.user.familyName || "Doe",
+         dateOfBirth: consumer.user.birthdate || "2010-10-17",
+       },
+       secrete: date,
+     };
+   
+     //Call API to start VC issuance
+     const response = await fetch("/api/issuance/start", {
+       method: "POST",
+       body: JSON.stringify({
+         credentialData: ticketCredentailData,
+         credentialTypeId: eventTicketVCTypeID,
+         claimMode: StartIssuanceInputClaimModeEnum.FixedHolder,
+       }),
+       headers: {
+         "Content-Type": "application/json",
+       },
+     });
+     if (!response.ok) {
+       console.log("Error in issuing credential");
+       return;
+     }
+   
+     let dataResponse = await response.json();
+     console.log("dataResponse", dataResponse);
+   
+     setIsLoading(false);
+   
+     //Generate claim link to affinidi vault from offer URL
+     if (dataResponse.credentialOfferUri) {
+       const vaultLink = VaultUtils.buildClaimLink(
+         dataResponse.credentialOfferUri
+       );
+       setVaultLink(vaultLink);
+       setIssuanceResponse(dataResponse);
+     }
+     console.log("issuanceResponse", issuanceResponse);
+   }
+   ```
 
 <hr/>
 
 ### 4. Binding the event handlers 
 
-Call the function `IssueTicketVC()` on the `handlePay` function
+- Call the function `IssueTicketVC()` on the `handlePay` function
 
-Update `handlePay` event handler function by calling `IssueTicketVC()` which prepares the event ticket VC data and invoke the Affinidi Credentials Issuance Service.
+- Update `handlePay` event handler function by calling `IssueTicketVC()` which prepares the event ticket VC data and invoke the Affinidi Credentials Issuance Service.
 
 ```javascript
   //Event handler on successful payment
