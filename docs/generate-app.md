@@ -1,4 +1,4 @@
-# Setup Event Ticket Management application with Affinidi Login Using Affinidi CLI
+# Module 1: Setup Event Ticket Management application with Affinidi Login Using Affinidi CLI
 
 In this workshop module, you'll create a baseline application code that serves as the foundation for integrating open identity protocols. You'll complete the local environment and application setup to ensure a consistent baseline across all participants before diving into further integrations.
 
