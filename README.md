@@ -34,7 +34,7 @@ With Affinidi Dev Tools and the Affinidi Trust Network, you’ll be able to inte
 
 The Affinidi Trust Network handles the complex trust infrastructure built with open standards, so you can focus on building and refining your app, adapting it as needed. This flexibility makes scaling easier and gives you the freedom to evolve your implementation over time.
 
-## What you will learn?
+## What will you learn?
 
 Build React apps with Open Identity protocols, letting users control their data in a decentralized store for secure exchange and trust.
 
