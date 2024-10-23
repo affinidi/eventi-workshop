@@ -1,4 +1,4 @@
-# React Workshop Guide: Master Decentralised User Profiles
+# Workshop Guide: Master Decentralised User Profiles
 
 Welcome to this 90-minute workshop where React developers will learn how to build secure, consent-driven applications using emerging Open Identity protocols like [OpenID for Verifiable Presentations - OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html). These protocols transform how applications access and verify user data.
 
